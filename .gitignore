@@ -1,0 +1,10 @@
+idea/
+.vscode/
+node_modules/
+temp/
+.env
+coverage
+dist
+
+uploads/*
+!uploads/.gitkeep
