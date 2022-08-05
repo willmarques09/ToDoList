@@ -10,17 +10,23 @@ type SearchParams = {
   take: number;
 };
 
-class TaskRepository implements ITaskRepository {
+class TaskRepository implements ITaskRepository {     
   private ormRepository: Repository<TaskEntitie>;
 
   constructor() {
     this.ormRepository = getRepository(TaskEntitie);
   }
+  async findByTitle(title: string) {
+    const taskTitle = await this.ormRepository.findOne({
+      title,
+    });
+    return taskTitle;
+  }
 
-  async create({user_id, title, description, limitDate}: ICreateTask) {
-    const task = this.ormRepository.create();
-    await this.ormRepository.save(task);
-    return task;
+  async create(task:ICreateTask) {
+    const createTask = this.ormRepository.create(task);
+    await this.ormRepository.save(createTask);
+    return createTask;
   }
 
   async save(task) {

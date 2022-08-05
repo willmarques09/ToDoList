@@ -12,7 +12,7 @@ import { v4 as uuid } from 'uuid';
 
 import UserEntitie from './usersEntitie';
 
-@Entity('task')
+@Entity('tasks')
 export default class TaskEntitie {
   @PrimaryColumn()
   id: string;
@@ -23,14 +23,17 @@ export default class TaskEntitie {
   @Column()
   description: string;
 
-  @Column()
-  limit_date: string;
-
   @JoinColumn({ name: 'user_id' })
   @ManyToOne(() => UserEntitie)
   users: UserEntitie;
 
- @CreateDateColumn()
+  @Column()
+  user_id: string;
+
+  @Column()
+  limit_date: string;
+
+  @CreateDateColumn()
   created_at: Date;
 
   @UpdateDateColumn()

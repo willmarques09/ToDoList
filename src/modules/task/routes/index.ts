@@ -1,24 +1,24 @@
 import { Router } from 'express';
 import CreateTaskControllers from '../controller/createTaskController';
+import DeleteTaskControllers from '../controller/deleteTaskController';
+import ListTaskControllers from '../controller/listTaskController';
+import UpdateTaskControllers from '../controller/updateTaskController';
 
 
-/* import DeleteUsersControllers from '../controller/deleteUserController';
-import ListUsersControllers from '../controller/listUserController';
-import UpdateUsersControllers from '../controller/updateUserController';
- */
+ 
 
 const createTaskController = new CreateTaskControllers();
-/* const listUsersController = new ListUsersControllers();
-const updateUsersController = new UpdateUsersControllers();
-const deleteUsersController = new DeleteUsersControllers(); */
+const listTaskController = new ListTaskControllers();
+const updateTaskController = new UpdateTaskControllers();
+const deleteTaskController = new DeleteTaskControllers(); 
 
 const task = Router();
 
 
 task.post('/', createTaskController.create);
-/* task.get('/', listUsersController.list);
-task.get('/:id', listUsersController.listById);
-task.put('/:id', updateUsersController.update);
-task.delete('/:id', deleteUsersController.delete); */
+task.get('/', listTaskController.list);
+task.get('/:id', listTaskController.listById);
+ task.put('/:id', updateTaskController.update);
+task.delete('/:id', deleteTaskController.delete); 
 
 export default task;

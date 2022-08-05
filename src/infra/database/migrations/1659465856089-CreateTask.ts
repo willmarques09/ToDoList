@@ -25,7 +25,7 @@ export class CreateTask1659465856089 implements MigrationInterface {
           },
           {
             name: 'limit_date',
-            type: 'numeric',
+            type: 'varchar',
           }, 
           {
             name: 'created_at',

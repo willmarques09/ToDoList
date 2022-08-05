@@ -10,14 +10,14 @@ class CreateTaskService {
     private taskRepository: ITaskRepository,
   ) {}
 
-  public async create({user_id, title, description, limitDate }: ICreateTask) {
+  public async create({user_id, title, description, limit_date }: ICreateTask) {
     const taskExists = await this.taskRepository.findByName(title);
 
     if (taskExists) {
       throw new AppError('There is already one task with this name');
     }
 
-    const product = await this.taskRepository.create({title, description, limitDate});
+    const product = await this.taskRepository.create({user_id, title, description, limit_date});
 
     return product;
   }

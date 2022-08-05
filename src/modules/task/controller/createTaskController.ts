@@ -7,14 +7,14 @@ import CreateTaskService from '../service/createTaskService';
 class CreateTaskControllers {
   async create(req: Request, res: Response) {
     const createSessionService = container.resolve(CreateTaskService);
-    const {id} = req.params;
-    const { title, description, limitDate } = req.body;
+   
+    const {user_id, title, description, limit_date } = req.body;
 
     const createTask = await createSessionService.create({
-      user_id: id,
+      user_id,
       title, 
       description, 
-      limitDate,
+      limit_date,
     });
     return res.status(201).json(instanceToInstance(createTask));
   }
