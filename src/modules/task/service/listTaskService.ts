@@ -6,7 +6,7 @@ import { ITaskRepository } from '../interface';
 
 
 @injectable()
-class ListUserService {
+class ListTaskService {
   constructor(
     @inject('TaskRepository')
     private taskRepository: ITaskRepository,
@@ -32,4 +32,4 @@ class ListUserService {
     return listUsers;
   }
 }
-export default ListUserService;
+export default ListTaskService;

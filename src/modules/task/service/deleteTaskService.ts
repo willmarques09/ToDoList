@@ -5,7 +5,7 @@ import { ITaskRepository } from '../interface';
 
 
 @injectable()
-class DeleteUsersService {
+class DeleteTaskService {
   constructor(
     @inject('TaskRepository')
     private taskRepository: ITaskRepository,
@@ -21,4 +21,4 @@ class DeleteUsersService {
   }
 }
 
-export default DeleteUsersService;
+export default DeleteTaskService;

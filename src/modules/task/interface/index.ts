@@ -1,4 +1,3 @@
-import { NamingStrategyInterface } from "typeorm";
 
 export interface ITask {
   id: string;

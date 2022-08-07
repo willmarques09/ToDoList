@@ -38,6 +38,7 @@ export default class TaskEntitie {
 
   @UpdateDateColumn()
   updated_at: Date;
+  
 
   constructor() {
     if (!this.id) {
