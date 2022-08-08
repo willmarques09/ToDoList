@@ -1,8 +1,11 @@
 import { Router } from 'express';
+import swaggerFile from '../swagger.json';
+import swaggerUi from 'swagger-ui-express';
 
 import usersRouter from '../modules/user/routes';
 import taskRouter from '../modules/task/routes';
 const routes = Router();
+
 
 routes.get('/', (req, res) => {
   res.json(
@@ -12,5 +15,6 @@ routes.get('/', (req, res) => {
 
 routes.use('/users', usersRouter);
 routes.use('/task', taskRouter);
+routes.use('/todo-doc', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 export default routes;

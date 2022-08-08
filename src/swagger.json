@@ -1,0 +1,79 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Documentation",
+    "description": "This is an To Do API by Willhan",
+    "version": "1.0.0",
+    "contact": {
+      "email": "willhanmarques09@gmail.com"
+    }
+  },
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Create a new user",
+        "description": "Create a new user",
+        "requestURL": "http://localhost:3333/api/v1/users",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "nickname": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "test 1",
+                  "email": "test1@gmail.com",
+                  "nickname": "test"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "409": {
+            "description": "There is already one user with this email"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Users"],
+        "summary": "View all Users",
+        "description": "View all Users, necessary -> Authorization: Bearer <token>",
+        "responses": {
+          "200": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": "string",
+                      "email": "string",
+                      "created_at": "Date"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
