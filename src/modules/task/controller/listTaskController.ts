@@ -10,7 +10,6 @@ class ListTaskControllers {
     const page = req.query.page ? Number(req.query.page) : 1;
     const limit = req.query.limit ? Number(req.query.limit) : 15;
     const { id } = req.params;
-    console.log(id,"id controlerr");
     
     const products = await user.list({ page, limit }, id);
     return res.status(200).json(instanceToInstance(products));

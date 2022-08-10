@@ -1,4 +1,4 @@
-import { id } from 'date-fns/locale';
+
 import { inject, injectable } from 'tsyringe';
 
 import AppError from '../../../utils/error';
@@ -27,12 +27,7 @@ class ListTaskService {
     const listUserTask = listUsers.data.filter((userTask)=>
       userTask.user_id === userById.id 
          )
-    console.log(userById.id,'byId BUUUUUUUUUUUU');
-    console.log(listUserTask, 'ListTask AAAAAAAAAAAAA');
-    console.log(listUsers.data,'aaaaaaaaaaaaaaaaaaaaa listUsersssss');
-    
-    
-    
+         
     return listUserTask;
   }
   async listById(id: string) {
