@@ -6,7 +6,7 @@
 
 ### FUNCIONALIDADES
 
-1 - CRUD -> Criar usário, listar usuário (paginação), listar por id, editar por id, deletar por id, logar por id
+1 - CRUD -> Criar usário, listar usuário (paginação), listar por id, editar por id, deletar por id
 
 
 3 - CRUD -> Criar uma tarefa, listar tarefas, listar tarefa por id, editar tarefa, deletar tarefa
