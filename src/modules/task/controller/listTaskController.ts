@@ -9,8 +9,10 @@ class ListTaskControllers {
     const user = container.resolve(ListTaskService);
     const page = req.query.page ? Number(req.query.page) : 1;
     const limit = req.query.limit ? Number(req.query.limit) : 15;
-
-    const products = await user.list({ page, limit });
+    const { id } = req.params;
+    console.log(id,"id controlerr");
+    
+    const products = await user.list({ page, limit }, id);
     return res.status(200).json(instanceToInstance(products));
   }
 

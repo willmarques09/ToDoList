@@ -13,9 +13,6 @@ class UpdateTaskService {
   async update({ id, user_id, title, description, limit_date }: IUpdate) {
     const titleExists = await this.taskRepository.findByTitle(title);
     const updateTask = await this.taskRepository.findById(id);
-console.log(titleExists);
-console.log(updateTask);
-
 
     if (!updateTask) {
       throw new AppError('Task not found', 404);

@@ -1,7 +1,8 @@
+import { id } from 'date-fns/locale';
 import { inject, injectable } from 'tsyringe';
 
 import AppError from '../../../utils/error';
-import { ISearchParams } from '../../user/interface/IUsers';
+import { ISearchParams, IUsersRepository } from '../../user/interface/IUsers';
 import { ITaskRepository } from '../interface';
 
 
@@ -10,9 +11,12 @@ class ListTaskService {
   constructor(
     @inject('TaskRepository')
     private taskRepository: ITaskRepository,
+    @inject('UsersRepository')
+    private usersRepository: IUsersRepository,
   ) {}
 
-  async list({ page, limit }: ISearchParams) {
+  async list({ page, limit }: ISearchParams, id: string) {
+    const userById = await this.usersRepository.findById(id);
     const take = limit;
     const skip = (Number(page) - 1) * take;
     const listUsers = await this.taskRepository.findAll({
@@ -20,14 +24,25 @@ class ListTaskService {
       skip,
       take,
     });
-    return listUsers;
+    const listUserTask = listUsers.data.filter((userTask)=>
+      userTask.user_id === userById.id 
+         )
+    console.log(userById.id,'byId BUUUUUUUUUUUU');
+    console.log(listUserTask, 'ListTask AAAAAAAAAAAAA');
+    console.log(listUsers.data,'aaaaaaaaaaaaaaaaaaaaa listUsersssss');
+    
+    
+    
+    return listUserTask;
   }
   async listById(id: string) {
     const listUsers = await this.taskRepository.findById(id);
 
+
     if (!listUsers) {
-      throw new AppError('User not found', 404);
+      throw new AppError('Task not found', 404);
     }
+
 
     return listUsers;
   }

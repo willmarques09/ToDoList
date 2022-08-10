@@ -16,7 +16,7 @@ const task = Router();
 
 
 task.post('/', createTaskController.create);
-task.get('/', listTaskController.list);
+task.get('/:id', listTaskController.list);
 task.get('/:id', listTaskController.listById);
  task.put('/:id', updateTaskController.update);
 task.delete('/:id', deleteTaskController.delete); 
